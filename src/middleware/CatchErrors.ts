@@ -17,6 +17,6 @@ export async function CatchErrors(
   }
   return res.status(500).json({
     status: "Error",
-    message: `Internal Server Error : ${error.message}`
+    message: `Internal Server Error: ${error.message}`
   });
 }

@@ -12,9 +12,13 @@ type CreateUserData = {
 
 export class CreateUserController {
   async create(req: Request, res: Response) {
+    if (!req.body) {
+      throw new AppError("Preencha o formulário!");
+    }
+
     const { email, name, password, confirmPassword }: CreateUserData = req.body;
 
-    const userEmailExists = await prisma.user.findUnique({
+    const userEmailExists = await prisma.user.findFirst({
       where: {
         email
       }
@@ -27,14 +31,13 @@ export class CreateUserController {
     if (password !== confirmPassword) {
       throw new AppError("As senhas não coincidem!");
     }
-    const STEP = 8;
 
-    const passwordHash = await hash(password, STEP);
+    const passwordHashed = await hash(password, 8);
 
     const userData = {
       name,
       email,
-      password: passwordHash
+      password: passwordHashed
     };
 
     const newUser = await prisma.user.create({
