@@ -6,7 +6,7 @@ import { env } from "process";
 
 import express from "express";
 
-import { CatchErrors } from "./middleware/CatchErrors";
+import { catchErrors } from "./middleware/CatchErrors";
 import { routes } from "./routes/index";
 
 const app = express();
@@ -16,7 +16,7 @@ app.use(cors());
 
 app.use(routes);
 
-app.use(CatchErrors);
+app.use(catchErrors);
 
 const PORT = env.PORT || env.DEV_PORT;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

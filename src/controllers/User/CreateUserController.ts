@@ -44,6 +44,6 @@ export class CreateUserController {
       data: userData
     });
 
-    return res.json(newUser);
+    return res.status(201).json(newUser);
   }
 }

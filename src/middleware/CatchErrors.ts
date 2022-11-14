@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 
 import { AppError } from "../utils/AppError";
 
-export async function CatchErrors(
+export async function catchErrors(
   error: Error,
   req: Request,
   res: Response,

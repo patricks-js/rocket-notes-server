@@ -13,7 +13,8 @@ type CreateUserData = {
 
 export class UpdateUserController {
   async update(req: Request, res: Response) {
-    const { id: user_id } = req.params;
+    const { id: user_id } = req.user;
+
     const {
       email,
       name,
