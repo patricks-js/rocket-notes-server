@@ -66,5 +66,5 @@ model Link {
   created_at DateTime @default(now())
   note_id    Int
 
-  @@map("link")
+  @@map("links")
 }
