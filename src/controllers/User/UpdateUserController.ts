@@ -32,8 +32,10 @@ export class UpdateUserController {
       throw new AppError("Este email já esta em uso!");
     }
 
-    if (newPassword === oldPassword) {
-      throw new AppError("As senhas não podem ser iguais!");
+    if (newPassword && oldPassword) {
+      if (newPassword === oldPassword) {
+        throw new AppError("As senhas não podem ser iguais!");
+      }
     }
 
     const userUpdatedData = {
